@@ -1,0 +1,62 @@
+
+\section{Preliminaries}
+
+For the rest of this article, we assume that $\mathcal{A}$ is an abelian category. 
+
+\begin{definition}[Bicomplex]
+A bicomplex $C_{*,*}$ in $\mathcal{A}$ is a bigraded object, or a diagram in $\mathcal{A}$ with morphisms 
+$d^h_n: C_{n,m}\longrightarrow C_{n-1,m}$ and $d^v_m: C_{n,m}\longrightarrow C_{n,m-1}$ such that $d^h \circ d^h = 0 = d^v \circ d^v$ and $d^h \circ d^v + d^v \circ d^h = 0$.
+\end{definition}
+
+Note that this is essentially a complex in the category of complexes in $\mathcal{A}$, except that the squares anti-commute instead of commute.
+
+If we have a bicomplex $C_{*,*}$ where all objects $C_{n,m}=0$ for all $n<0$ or $m<0$, then we call $C$ a first quadrant bicomplex. 
+
+
+\begin{definition}[Totalization]
+The totalization of a bicomplex is the complex
+\begin{equation*}
+    \Tot(C_{*,*}) = (\bigoplus_{a+b = n}C_{a,b}|n \in \mathbb{Z})
+\end{equation*}
+with the differentials being $d_n = \sum_{a+b=n} d_a^h + d_b^v$. 
+\end{definition}
+
+
+The totalization of a bicomplex has the natural filtration
+\begin{equation*}
+    F_p (\Tot(C_{*,*})_n) = (\bigoplus_{a+b = n} C_{a,b}|a>p).
+\end{equation*}
+Since we sum along the diagonals when making the totalization, we can interchange the indices in the bicomplex and still be left with the same totalization, i.e.
+\begin{equation*}
+    \Tot((C_{a,b}|a,b \in \mathbb{Z})) \cong \Tot((C_{b,a})|a,b \in \mathbb{Z}).
+\end{equation*}
+Hence we actually get two natural filtrations on the totalization, namely a horisontal one and a vertical one. This is one of the tricks we will use to prove the main theorem. 
+
+
+\begin{definition}[Spectral sequence]
+A spectral sequence of homological type is a tri-graded object, or a list of bi-graded objects $E_{p,q}^r$ together with morphisms $d_r: E_{p,q}^r \longrightarrow E_{p+r, q+r-1}^r$ for all $r>0, p,q\in \mathbb{Z}$, and isomorphisms $E_{p,q}^{r+1}\cong H(E_{p,q}^{r})$. 
+\end{definition}
+
+This object can be thought of as a book, where for each $r$, we have a page with a bigraded object $E_{*,*}^r$ together with a set of maps making the bigraded object into a complex. When we flip a page we get a new bigraded object which consists of the homology of the complexes with the maps new maps making this new bigraded object into a complex. The ``next page'' is sometimes called the derived object of the previous page. 
+
+
+%\begin{theorem}
+%Every bicomplex has an associated spectral sequence.
+%\end{theorem}
+%\begin{proof}
+%This is an important result about bicomplexes and is one of the foundations of why we can easily use spectral sequences when we encounter a bicomplex. We wont show the proof in this article, but a good proof is Theorem 5.4.1 in C. Weibel's book ``An introduction to homological algebra''.
+%\end{proof}
+
+Associated to every bicomplex $C_{*,*}$, we have a spectral sequence whose second page $E^2$ is the crossed double homology, i.e. $E^2_{p,q}=H_p^{h}(H_q^{v}(C))$, where $h$ and $v$ means horizontal and vertical respectively. This associated spectral sequence is a special case of the associated spectral sequence one gets from a filtered complex. In this special case, the complex is the totalization of $C_{*,*}$ and the filtration is one of the two natural filtrations described earlier, i.e. the row and column filtrations. We leave out the description of how one gets a spectral sequence from a filtered complex as how we get it is not important, just that we indeed can.  
+
+\begin{lemma}
+Suppose $C_{*,*}$ is a first quadrant bicomplex. %i.e. that $C_{a,b} = 0$ when $a < 0$ or $b < 0$. 
+Then the associated spectral sequence with respect to both of the natural filtrations converge to the homology of the total complex, i.e.
+\begin{align*}
+    E^2_{p,q} = H_p H_q (C_{*,*}) &\implies H_{p+q}(\Tot(C_{*,*})) \\
+    D^2_{p,q} = H_q H_p (C_{*,*}) &\implies H_{p+q}(\Tot(C_{*,*}))
+\end{align*}
+\end{lemma}
+\begin{proof}
+We won't go through the proof, but we refer the reader to \cite[theorem 5.5.1]{weibel}.
+\end{proof}

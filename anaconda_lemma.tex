@@ -1,0 +1,100 @@
+\documentclass[%
+    12pt,
+    oneside,
+    a4paper,
+%    BCOR=0mm,            % Binding correction -- added inner margin space
+    headsepline=true,    % Header line
+    numbers=noendperiod, % No period after sectional units
+    appendixprefix=true  % Print 'Appendix (Norsk: Tillegg)'
+]%
+{article}
+\usepackage[utf8]{inputenc}
+%\usepackage{tikz}
+\usepackage{tikz-cd}
+\usepackage{faktor}
+\usepackage{amsmath}
+\usepackage{mathrsfs}
+\usepackage{parskip}
+\usepackage{mdframed}
+\usepackage{amssymb}
+\usepackage[english]{babel}
+\usepackage{amsthm}
+\usepackage{cleveref}
+\setlength{\marginparwidth}{2cm}
+\usepackage{todonotes}
+\usepackage{geometry}
+\geometry{
+top=35mm,
+bottom=35mm,
+left=35mm,
+right=35mm
+}
+
+\mdfsetup{
+innertopmargin=5pt,
+linecolor=black,
+middlelinewidth=2pt,
+topline=true,
+skipabove=6pt, 
+skipbelow=6pt
+}
+
+
+\newcommand\quotient[2]{
+    \mathchoice
+        {% \displaystyle
+            \text{\raise1ex\hbox{$#1$}\Big/\lower1ex\hbox{$#2$}}
+        }
+        {% \textstyle 
+        #1\,/\,#2
+        }
+        {% \scriptstyle
+            #1\,/\,#2
+        }
+        {% \scriptscriptstyle  
+            #1\,/\,#2
+        }
+}
+
+ 
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem{lemma}{Lemma}
+\newtheorem{definition}{Definition}
+\newtheorem{remark}{Remark}
+\newtheorem{example}{Example}
+
+
+\DeclareMathOperator{\Ker}{Ker}
+\DeclareMathOperator{\Cok}{Cok}
+\DeclareMathOperator{\Image}{Im}
+\DeclareMathOperator{\Tot}{Tot}
+
+\author{Torgeir Aambø \and Jacob Grevstad}
+\title{The Anaconda lemma}
+\date{}
+
+\begin{document}
+\maketitle
+%\frontmatter
+%\pagestyle{empty}
+
+\input{tex/abstract}
+\input{tex/introduction}\clearpage
+\input{tex/preliminaries}
+\input{tex/theorem}
+\input{tex/examples}
+\input{tex/differential}
+
+\bibliographystyle{alpha}
+\bibliography{references}
+
+\end{document}
+
+% External discussion:
+
+% - https://www.reddit.com/r/math/comments/gd5rc1/has_anyone_seen_this_generalization_of_the_snake/
+
+% - https://mathoverflow.net/questions/359328/has-anyone-seen-this-generalization-of-the-snake-lemma-is-it-useful
+
+% - https://math.stackexchange.com/questions/3651496/has-anyone-seen-this-generalization-of-the-snake-lemma-is-it-useful

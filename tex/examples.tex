@@ -1,0 +1,53 @@
+\begin{corollary}[Snake lemma]
+The normal snake lemma follows from setting $n=2$. We do remark that this proof of the snake lemma is circular, as the snake lemma is needed to prove the convergence of the spectral sequence. 
+\end{corollary}
+
+\begin{corollary}
+Every surjection-injection composition can be realised as a connecting homomorphism in a diagram. 
+\end{corollary}
+\begin{proof}
+This is inspired by the fact that we can realise each morphism $f$ between two objects $A$ and $B$ in an abelian category $\mathscr{A}$ as the connecting homomorphism in the following diagram.
+% https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZABgBpiBdUkANwEMAbAVxiRGJAF9T1Nd9CKAIzkqtRizYBBLjxAZseAkQBMo6vWatEIGd16KBRMkLGbJOgEKyD-ZcNKmNE7SGv75fJYORqn4rTYOTjEYKABzeCJQADMAJwgAWyQyEBwIJCEPeKTM6nSkNQCLECwoAH09ORzkxFSCxABmbITakTSMxAAWZ0CdGJsQGsL8zoBWFtym0aQe4tcy8vdq1tmZxAmKTiA
+\begin{equation*}
+\begin{tikzcd}
+0 \arrow[r] \arrow[d] & A \arrow[r, "id_A"] \arrow[d, "f"] & A \arrow[d] \\
+B \arrow[r, "id_B"]   & B \arrow[r]                        & 0          
+\end{tikzcd}
+\end{equation*}
+We can then take a composition of morphisms
+\begin{tikzcd}
+A \arrow[r, "f"] & B \arrow[r, "g"] & C
+\end{tikzcd}
+and construct a diagram realising $g\circ f$ as the connecting homomorphism by using these as building blocks. For the morphisms $f$ and $g$ separately, we get diagrams 
+\begin{center}
+    \begin{tikzcd}
+0 \arrow[r] \arrow[d] & A \arrow[r, "id_A"] \arrow[d, "f"] & A \arrow[d] \\
+B \arrow[r, "id_B"]   & B \arrow[r]                        & 0          
+\end{tikzcd}
+and 
+\begin{tikzcd}
+0 \arrow[r] \arrow[d] & B \arrow[r, "id_B"] \arrow[d, "g"] & B \arrow[d] \\
+C \arrow[r, "id_C"]   & C \arrow[r]                        & 0          
+\end{tikzcd}
+\end{center}
+which we can stack on top of each other to form the following staircase diagram.
+\begin{equation*}
+    \begin{tikzcd}
+                      & 0 \arrow[r] \arrow[d]              & A \arrow[r, "id_A"] \arrow[d, "f"] & A \arrow[d] \\
+0 \arrow[r] \arrow[d] & B \arrow[r, "id_B"] \arrow[d, "g"] & B \arrow[d] \arrow[r]              & 0           \\
+C \arrow[r, "id_C"]   & C \arrow[r]                        & 0                                  &            
+\end{tikzcd}
+\end{equation*}
+Since $f$ is surjective and $g$ is injective, we get that the diagram is an exact bicomplex, and by \cref{Thm:long} we get a homomorphism $\partial :A \longrightarrow C$, which by going down the staircase in the diagram is the same as the composition $g\circ f$. 
+
+
+\end{proof}
+
+%Burde være, men nå kommuterer ikke firkantene lenger :(:
+%\begin{equation*}
+%\begin{tikzcd}
+%\Ker g \ar[r] \ar[d]  & \Ker g \arrow[r, "0"] \arrow[d]              & A \arrow[r, "id_A"] \arrow[d, "f"] & A \arrow[d] \\
+%0 \arrow[r] \arrow[d] & B \arrow[r, "id_B"] \arrow[d, "g"] & B \arrow[d] \arrow[r]              & 0  \ar[d]         \\
+%C \arrow[r, "id_C"]   & C \arrow[r, "0"]                        & \Cok f \ar[r]                                  &     \Cok f       
+%\end{tikzcd}
+%\end{equation*}

@@ -1,0 +1,27 @@
+
+\section{Constructing the connecting homomorphism}
+Let $n \geq 2$ and
+\begin{center}
+\begin{tikzcd}
+& {C_{n+1,n}} \arrow[r]{}{d_{n+1,n}^h} \arrow[d]{}{d^v_{n+1,n}} & {C_{n,n}} \arrow[r]{}{d^h_{n,n}} \arrow[d]{}{d^v_{n,n}} & \cdots \arrow[r]{}{d^h_{2,n}} & {C_{1,n}} \arrow[d]{}{d^v_{1,n}} \arrow[r] & 0 \\
+0 \arrow[r] & {C_{n+1,n-1}} \arrow[r]{}{d^h_{n+1,n-1}} \arrow[d] & {C_{n,n-1}} \arrow[r] \arrow[d] & \cdots \arrow[r] & {C_{1,n-1}} \arrow[d] \arrow[r] & 0 \\
+\vdots            & \vdots \arrow[d]              & \vdots \arrow[d]              &                  & \vdots \arrow[d]    \\
+0 \arrow[r] & {C_{n+1,2}} \arrow[r]{}{d^h_{n+1,2}} \arrow[d]{}{d^v_{n+1,2}} & {C_{n,2}} \arrow[r] \arrow[d]{}{d^v_{n,2}} & \cdots \arrow[r] & {C_{1,2}} \arrow[d]{}{d^v_{1,2}} \arrow[r] & 0       \\
+0 \arrow[r] &{C_{n+1,1}} \arrow[r]           & {C_{n,1}} \arrow[r]           & \cdots \arrow[r]{}{d_{2,1}^h} & {C_{1,1}}   
+\end{tikzcd}
+\end{center}
+be an exact bicomplex. We want to construct a map from $\Ker d^v_{1, n}$ to $\Cok d^v_{n+1,2}$. Let $x_0$ be in $\Ker d^v_{1, n}$. Since $d^h_{2,n}$ is surjective there is an $x_1 \in C_{2,n}$ such that $x_1 + \Ker d^h_{2,n} = x_1 + \Image d^h_{3, n}$ is the preimage of $x_0$ by $d^h_{2,n}$. Let $x_2 := d^v_{2,n}(x_1)$, then
+\begin{align*}
+    d^v_{2,n}(x_1 + \Image d^h_{3, n}) &= x_2 + d^v_{2,n}(\Image d^h_{3, n})\\ 
+    &= x_2 + \Image (d^v_{2,n} \circ d^h_{3, n})\\
+    &= x_2 + \Image (d^h_{3, n-1} \circ d^v_{3, n})
+\end{align*}
+Since $x_0$ is in $\Ker d^v_{1, n}$ and the squares commute it follows that $x_2$ is in $\Ker d^h_{2,n-1} = \Image d^h_{3, n-1}$. Thus we can find $x_3$ in $C_{3, n-1}$ such that $x_3 +  \Image d^v_{3, n} + \Ker d^h_{3, n-1}$ is the preimage of $x_2 + \Image (d^h_{3, n-1} \circ d^v_{3, n})$ by $d^h_{3, n-1}$. Let $x_4 := d^v_{3,n-1} (x_3)$, then
+\begin{align*}
+    d^v_{3,n-1} (x_3 +  \Image d^v_{3, n} + \Ker d^h_{3, n-1}) 
+    &= d^v_{3,n-1} (x_3 +  \Ker d^v_{3, n-1} + \Image d^h_{4, n-1}) \\
+    &= x_4 + \Image (d^v_{3,n-1} \circ d^h_{4, n-1}) \\ 
+    &=
+    x_4 + \Image (d^h_{4, n-2} \circ d^v_{4, n-1})
+\end{align*}
+We see that this is simply a shift in index from our previous equation and thus we can iterate this process until we reach the bottom of the diagram. This will lead us to $x_{2n-2} + \Image (d^h_{n+1, 1} \circ d^v_{n+1, 2}) \subseteq \Ker d^h_{N, 1}$. Since $d^h_{N+1, 1}$ is injective we may consider $x_{2n-2}$ as an element of $C_{n+1,1}$. Then the preimage of $x_{2n-2} + \Image (d^h_{n+1, 1} \circ d^v_{n+1, 2})$ by $d^h_{n, 1}$ is $x_{2n-2} + \Image d^v_{n+1, 2}$ which gives a well-defined element of $\Cok d^v_{n+1,2}$. 
